@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryColumn,  } from "typeorm";
+import { type } from "os";
+import { Entity, Column, PrimaryColumn, OneToMany,  } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { UserSeller } from "./userSeller.entity";
 
 @Entity("purchase")
 export class Purchase{
@@ -12,4 +14,7 @@ export class Purchase{
     
     @Column({length:100})
     password: string
+
+    @OneToMany(type => UserSeller, userSeller=> userSeller.purchaseId, {eager:true})
+    userSellerId: UserSeller[]
 }
