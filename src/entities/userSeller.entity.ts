@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Cars } from "./cars";
+import { Cars } from "./cars.entity";
 
 import { Purchase } from "./purchase.entity";
 
