@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Cars } from "./cars";
 
 import { Purchase } from "./purchase.entity";
 
@@ -30,6 +31,9 @@ export class UserSeller{
 
     @ManyToOne(type => Purchase, purchase=> purchase.userSellerId )
     purchaseId: Purchase
+
+    @ManyToOne(type => Cars, cars=> cars.userSellersId)
+    carsId: Cars
     
 
 
