@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
 import { UserSeller } from "./userSeller.entity";
 
 
@@ -20,6 +20,16 @@ import { UserSeller } from "./userSeller.entity";
     @Column({length: 15})
         telephone: string
 
-    @OneToMany(type => UserSeller, userSeller=> userSeller.carsId)
-        userSellersId: UserSeller[]     
+    @ManyToOne(() => UserSeller, userSeller => userSeller.cars)
+        userSeller: UserSeller
+        
+    @Column({ type: "int" })
+        km: number
+
+    @Column({ type: "float", precision: 9, scale: 2 })
+        value: number;
+
+    @Column({ type: "text", nullable: true })
+        description: string;
+    
     }
