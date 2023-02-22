@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToOne, OneToMany } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Purchase } from "./purchase.entity";
+
 
 // import { Vehicles } from "./vehicles.entity";
 
@@ -27,9 +27,6 @@ export class UserSeller {
 
   @CreateDateColumn()
   createdAt: Date
-
-  @ManyToOne(type => Purchase, purchase => purchase.userSellerId)
-  purchaseId: Purchase
 
 
   // @OneToMany(() => Vehicles, vehicles => vehicles.userSeller)
