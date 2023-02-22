@@ -3,7 +3,7 @@ import "dotenv/config"
 import { Vehicles } from "./entities/vehicles.entity";
 import { VehiclesImages } from "./entities/vehiclesImages.entity";
 import { UserSeller } from "./entities/userSeller.entity";
-import { userClient } from "./entities/userClient.entity";
+import { userClient } from "./entities/user.entity";
 // import { User } from "./entities/user.entity";
 import { initial1677079536785} from "./migrations/1677079536785-initial"
 

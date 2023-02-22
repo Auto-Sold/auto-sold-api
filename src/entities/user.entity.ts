@@ -1,8 +1,8 @@
-import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne, PrimaryColumn, OneToMany } from "typeorm";
+import { Vehicles } from "./vehicles.entity";
 
-
-@Entity("userClient")
-export class userClient {
+@Entity("user")
+export class User {
 
     @PrimaryColumn("uuid")
     readonly id: string
@@ -24,5 +24,8 @@ export class userClient {
 
     @Column({ nullable: false })
     cpf: number
+
+    @OneToMany(() => Vehicles, vehicles => vehicles.user)
+    vehicles: Vehicles[]
 
 }
