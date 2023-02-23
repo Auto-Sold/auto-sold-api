@@ -3,8 +3,10 @@ import "dotenv/config"
 import { Vehicles } from "./entities/vehicles.entity";
 import { VehiclesImages } from "./entities/vehiclesImages.entity";
 import { User} from "./entities/user.entity";
-// import { User } from "./entities/user.entity";
-import { initial1677079536785} from "./migrations/1677079536785-initial"
+import { Answers } from "./entities/answers.entity";
+import { Comments } from "./entities/comments.entity";
+import { initial1677193587343 } from "./migrations/1677193587343-initial";
+
 
 const AppDataSource = new DataSource(
     process.env.NODE_ENV === "test" ?
@@ -23,8 +25,8 @@ const AppDataSource = new DataSource(
             database: process.env.DB,
             logging: true,
             synchronize: true,
-            entities: [Vehicles, VehiclesImages, User],
-            migrations: [initial1677079536785]
+            entities: [Vehicles, VehiclesImages, User, Comments, Answers],
+            migrations: [initial1677193587343]
             // entities: [User],
             // migrations: [initial1676095782228]
         }

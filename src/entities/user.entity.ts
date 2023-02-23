@@ -30,6 +30,9 @@ export class User {
     @Column ({ nullable: true})
     image: string
 
+    @Column ({ nullable: true})
+    bio: string
+
     @OneToMany(() => Vehicles, vehicles => vehicles.user)
     vehicles: Vehicles[]
 
