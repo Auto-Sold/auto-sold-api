@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import "dotenv/config"
-// import { User } from "./entities/user.entity";
-// import { initial1676095782228 } from "./migrations/1676095782228-initial"
+import { Vehicles } from "./entities/vehicles.entity";
+import { User } from "./entities/user.entity";
 
 const AppDataSource = new DataSource(
     process.env.NODE_ENV === "test" ?
@@ -20,10 +20,8 @@ const AppDataSource = new DataSource(
             database: process.env.DB,
             logging: true,
             synchronize: true,
-            entities: ['src/entities/*.ts'],
-            migrations: ['src/migrations/*.ts']
-            // entities: [User],
-            // migrations: [initial1676095782228]
+            entities: [Vehicles, User],
+            migrations: []
         }
 )
 

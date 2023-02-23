@@ -1,8 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn } from "typeorm";
-import { VehiclesImages } from "./vehiclesImages.entity";
 import { v4 as uuid } from "uuid";
-
-// import { UserSeller } from "./userSeller.entity";
+import { User } from "./user.entity";
 
 @Entity("vehicles")
 export class Vehicles {
@@ -34,6 +32,24 @@ export class Vehicles {
     @Column()
     image: string;
 
+    @Column({ nullable: true })
+    galeryImage1: string;
+
+    @Column({ nullable: true })
+    galeryImage2: string;
+
+    @Column({ nullable: true })
+    galeryImage3: string;
+
+    @Column({ nullable: true })
+    galeryImage4: string;
+
+    @Column({ nullable: true })
+    galeryImage5: string;
+
+    @Column({ nullable: true })
+    galeryImage6: string;
+
     @Column({ default: true })
     isActive: boolean;
 
@@ -43,11 +59,11 @@ export class Vehicles {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @ManyToOne(() => VehiclesImages, vehiclesImages => vehiclesImages.vehicle, { eager: true })
-    vehiclesImages: VehiclesImages[];
+    @Column()
+    userId: string;
 
-    // @ManyToOne(() => UserSeller, userSeller => userSeller.vehicles)
-    // userSeller: UserSeller
+    @ManyToOne(() => User)
+    user: User[]
 
     constructor() {
         if (!this.id) {
