@@ -1,6 +1,8 @@
 import { Request, Response} from "express";
 import retrieveAnnouncementsService from "../../services/announce/retrieveAnnounce.service";
 
+// =========================IMPORTS=================================================
+
 const retrieveAnnounceController =async (req:Request, res: Response) => {
     const userId = req.params.id;
     const listAnnounce = await retrieveAnnouncementsService(userId);
