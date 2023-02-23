@@ -1,0 +1,10 @@
+import { Request, Response} from "express";
+import listAnnouncementsService from "../../services/announce/listAnnounce.service";
+
+const listAnnounceController =async (req:Request, res: Response) => {
+    
+    const listAnnounce = await listAnnouncementsService();
+    return res.status(201).json(listAnnounce);
+}
+
+export default listAnnounceController
