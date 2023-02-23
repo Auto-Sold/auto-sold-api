@@ -11,7 +11,7 @@ export class VehiclesImages {
     @Column({ nullable: false, array: true, default: [] })
     url: string
 
-    @OneToMany(() => VehiclesImages, vehiclesImages => vehiclesImages.vehicle)
+    @OneToMany(() => Vehicles, vehiclesImages => vehiclesImages.vehiclesImages)
     vehicle: Vehicles[]
 
     constructor() {
