@@ -12,8 +12,16 @@ const createAnnounceController = async (req: Request, res: Response) => {
             price,
             description,
             vehicleType,
-            image
+            image,
+            galeryImage1,
+            galeryImage2,
+            galeryImage3,
+            galeryImage4,
+            galeryImage5,
+            galeryImage6,
         } = req.body
+
+        // const { id } = req.user
 
         const newAnnounce = await createAnnounceService({
             announceType,
@@ -23,8 +31,14 @@ const createAnnounceController = async (req: Request, res: Response) => {
             price,
             description,
             vehicleType,
-            image
-        })
+            image,
+            galeryImage1,
+            galeryImage2,
+            galeryImage3,
+            galeryImage4,
+            galeryImage5,
+            galeryImage6,
+        }, req.user?.id)
 
         return res.status(201).send(newAnnounce)
     } catch (error) {

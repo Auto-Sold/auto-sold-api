@@ -6,7 +6,7 @@ import { Vehicles } from "./vehicles.entity";
 @Entity("user")
 export class User {
 
-    @PrimaryColumn("uuid")
+    @PrimaryGeneratedColumn("uuid")
     readonly id: string
 
     @Column({ length: 225, nullable: false })
@@ -27,13 +27,13 @@ export class User {
     @Column({ nullable: false })
     cpf: number
 
-    @Column ({ nullable: true})
+    @Column({ nullable: true })
     image: string
 
-    @Column ({ nullable: true})
+    @Column({ nullable: true })
     bio: string
 
-    @OneToMany(() => Vehicles, vehicles => vehicles.user)
+    @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true })
     vehicles: Vehicles[]
 
     @OneToMany(() => Comments, comments => comments.user)
