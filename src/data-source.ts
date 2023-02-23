@@ -2,6 +2,9 @@ import { DataSource } from "typeorm";
 import "dotenv/config"
 import { Vehicles } from "./entities/vehicles.entity";
 import { User } from "./entities/user.entity";
+import { Comments } from "./entities/comments.entity";
+import { Answers } from "./entities/answers.entity";
+import { updateEntities1677194996589 } from "./migrations/1677194996589-update-entities";
 
 const AppDataSource = new DataSource(
     process.env.NODE_ENV === "test" ?
@@ -20,8 +23,8 @@ const AppDataSource = new DataSource(
             database: process.env.DB,
             logging: true,
             synchronize: true,
-            entities: [Vehicles, User],
-            migrations: []
+            entities: [Vehicles, User, Comments, Answers],
+            migrations: [updateEntities1677194996589]
         }
 )
 

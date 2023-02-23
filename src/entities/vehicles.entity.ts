@@ -59,7 +59,7 @@ export class Vehicles {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @Column()
+    @Column({ nullable: true })
     userId: string;
 
     @ManyToOne(() => User)

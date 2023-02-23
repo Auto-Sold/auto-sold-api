@@ -17,7 +17,7 @@ const createAnnounceService = async ({
     galeryImage4,
     galeryImage5,
     galeryImage6,
-}: IAnnounceRequest, id: string) => {
+}: IAnnounceRequest, id?: string) => {
     const vehicleRepository = AppDataSource.getRepository(Vehicles)
 
     const vehicle = vehicleRepository.create({
