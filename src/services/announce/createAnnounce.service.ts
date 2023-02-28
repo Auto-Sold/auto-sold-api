@@ -11,12 +11,7 @@ const createAnnounceService = async ({
     description,
     vehicleType,
     image,
-    galeryImage1,
-    galeryImage2,
-    galeryImage3,
-    galeryImage4,
-    galeryImage5,
-    galeryImage6,
+   
 }: IAnnounceRequest, id?: string) => {
     const vehicleRepository = AppDataSource.getRepository(Vehicles)
 
@@ -32,12 +27,7 @@ const createAnnounceService = async ({
         userId: id,
         updatedAt: new Date(),
         image: image,
-        galeryImage1: galeryImage1,
-        galeryImage2: galeryImage2,
-        galeryImage3: galeryImage3,
-        galeryImage4: galeryImage4,
-        galeryImage5: galeryImage5,
-        galeryImage6: galeryImage6,
+       
     })
 
     await vehicleRepository.save(vehicle)

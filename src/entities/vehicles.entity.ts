@@ -32,24 +32,6 @@ export class Vehicles {
     @Column()
     image: string;
 
-    @Column({ nullable: true })
-    galeryImage1: string;
-
-    @Column({ nullable: true })
-    galeryImage2: string;
-
-    @Column({ nullable: true })
-    galeryImage3: string;
-
-    @Column({ nullable: true })
-    galeryImage4: string;
-
-    @Column({ nullable: true })
-    galeryImage5: string;
-
-    @Column({ nullable: true })
-    galeryImage6: string;
-
     @Column({ default: true })
     isActive: boolean;
 
