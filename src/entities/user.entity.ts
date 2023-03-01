@@ -1,4 +1,5 @@
-import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne, PrimaryColumn, OneToMany } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne, PrimaryColumn, OneToMany, UpdateDateColumn } from "typeorm";
+import { Exclude } from "class-transformer";
 import { Answers } from "./answers.entity";
 import { Comments } from "./comments.entity";
 import { Vehicles } from "./vehicles.entity";
@@ -18,10 +19,14 @@ export class User {
     @CreateDateColumn()
     createdAt: Date
 
+    @UpdateDateColumn()
+    updatedAt: Date;
+
     @Column({ length: 15, nullable: false })
     telephone: string
 
     @Column({ length: 100, nullable: false })
+    @Exclude()
     password: string
 
     @Column({ nullable: false })
@@ -32,7 +37,10 @@ export class User {
 
     @Column({ nullable: true })
     bio: string
-
+  
+    @Column({ default: true })
+    isActive: boolean;
+    
     @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true })
     vehicles: Vehicles[]
 
