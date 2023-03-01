@@ -8,10 +8,11 @@ import ensureauthToken from "../middlewares/ensureAuthToken.middleware";
 const routes = Router()
 
 export const announceRoutes = () => {
+
     routes.post("", createAnnounceController)
     routes.get("", ensureauthToken, listAnnounceController)
-    routes.delete("/:id", ensureauthToken, deleteAnnounceController)
     routes.get("/:id", ensureauthToken, retrieveAnnounceController)
+    routes.delete( "/:id", deleteAnnounceController )
     // routes.patch("/:id", ensureauthToken,)
 
     return routes

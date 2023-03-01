@@ -1,12 +1,11 @@
 import { DataSource } from "typeorm";
 import "dotenv/config"
 import { Vehicles } from "./entities/vehicles.entity";
-import { VehiclesImages } from "./entities/vehiclesImages.entity";
-import { User} from "./entities/user.entity";
-import { Answers } from "./entities/answers.entity";
+import { User } from "./entities/user.entity";
 import { Comments } from "./entities/comments.entity";
-import { initial1677193587343 } from "./migrations/1677193587343-initial";
-
+import { Answers } from "./entities/answers.entity";
+import { vehiclesImages1677680197402 } from "./migrations/1677680197402-vehiclesImages";
+import { VehiclesImages } from "./entities/vehiclesImages.entity";
 
 const AppDataSource = new DataSource(
     process.env.NODE_ENV === "test" ?
@@ -25,10 +24,8 @@ const AppDataSource = new DataSource(
             database: process.env.DB,
             logging: true,
             synchronize: true,
-            entities: [Vehicles, VehiclesImages, User, Comments, Answers],
-            migrations: [initial1677193587343]
-            // entities: [User],
-            // migrations: [initial1676095782228]
+            entities: [Vehicles, User, Comments, Answers, VehiclesImages],
+            migrations: [vehiclesImages1677680197402]
         }
 )
 

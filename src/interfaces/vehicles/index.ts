@@ -7,5 +7,6 @@ export interface IAnnounceRequest {
     description: string
     vehicleType: string
     image: string
+   
 }
 
