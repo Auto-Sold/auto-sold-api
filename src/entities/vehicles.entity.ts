@@ -1,7 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn } from "typeorm";
+
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn, OneToMany } from "typeorm";
+import { VehiclesImages } from "./vehiclesImages.entity";
 import { v4 as uuid } from "uuid";
 import { User } from "./user.entity";
+import { Comments } from "./comments.entity";
+
 import { VehiclesImages } from "./vehiclesImages.entity";
+
 
 @Entity("vehicles")
 export class Vehicles {
@@ -54,6 +59,9 @@ export class Vehicles {
     @ManyToOne(() => VehiclesImages, vehiclesImages => vehiclesImages.vehicle, { eager: true })
     vehiclesImages: VehiclesImages[];
 
+
+    @OneToMany(() => Comments, comments => comments.vehicles, { eager: true })
+    comments: Comments
 
     constructor() {
         if (!this.id) {

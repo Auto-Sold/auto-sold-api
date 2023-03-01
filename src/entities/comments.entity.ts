@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, Up
 import { v4 as uuid } from "uuid";
 import { Answers } from "./answers.entity";
 import { User } from "./user.entity";
-
+import { Vehicles } from "./vehicles.entity";
 @Entity("comments")
 export class Comments {
 
@@ -20,6 +20,10 @@ export class Comments {
 
     @ManyToOne(() => User, user => user.comments)
     user: User
+
+
+    @ManyToOne(() => Vehicles, vehicles => vehicles.comments)
+    vehicles: Vehicles
 
     constructor() {
         if (!this.id) {
