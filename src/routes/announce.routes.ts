@@ -1,7 +1,6 @@
 import { Router } from "express";
 import createAnnounceController from "../controllers/announce/createAnnounce.controller";
 import deleteAnnounceController from "../controllers/announce/deleteAnnounce.controller";
-import { listAnnounceId } from "../controllers/announce/listAnnouceId.controller";
 import ensureauthToken from "../middlewares/ensureAuthToken.middleware";
 
 const routes = Router()
@@ -9,7 +8,7 @@ const routes = Router()
 export const announceRoutes = () => {
     routes.post( "", createAnnounceController )
     routes.delete( "/:id", deleteAnnounceController )
-    routes.get( "/:id", listAnnounceId )
+    
     // routes.get("", ensureauthToken,)
     // routes.delete("/:id", ensureauthToken,)
     // routes.get("/:id", ensureauthToken,)

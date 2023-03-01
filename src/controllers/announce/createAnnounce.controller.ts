@@ -12,13 +12,8 @@ const createAnnounceController = async (req: Request, res: Response) => {
             price,
             description,
             vehicleType,
-            image,
-            galeryImage1,
-            galeryImage2,
-            galeryImage3,
-            galeryImage4,
-            galeryImage5,
-            galeryImage6,
+            image
+           
         } = req.body
 
         // const { id } = req.user
@@ -32,12 +27,7 @@ const createAnnounceController = async (req: Request, res: Response) => {
             description,
             vehicleType,
             image,
-            galeryImage1,
-            galeryImage2,
-            galeryImage3,
-            galeryImage4,
-            galeryImage5,
-            galeryImage6,
+        
         }, req.user?.id)
 
         return res.status(201).send(newAnnounce)
