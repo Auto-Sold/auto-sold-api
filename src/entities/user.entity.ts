@@ -33,6 +33,9 @@ export class User {
     @Column ({ nullable: true})
     bio: string
 
+    @Column()
+    tokenResetPassword: string
+
     @OneToMany(() => Vehicles, vehicles => vehicles.user)
     vehicles: Vehicles[]
 
