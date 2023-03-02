@@ -3,6 +3,7 @@ import AppDataSource from "../../data-source";
 
 import { AppError } from "../../errors/appError";
 import bcrypt from "bcrypt"
+import * as crypto from "crypto"
 
 import { IUserRequest } from "../../interfaces/users";
 
@@ -16,7 +17,6 @@ export const createUserService = async ( {completeName, email, telephone, passwo
     if(emailOrCpfAlreadyExists){
         throw new AppError(" User Already exists ")
     }
-
     const hashPassword = bcrypt.hashSync(password,10)
     const user = new User()
     user.completeName = completeName

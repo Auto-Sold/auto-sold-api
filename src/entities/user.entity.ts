@@ -37,11 +37,14 @@ export class User {
 
     @Column({ nullable: true })
     bio: string
+
+    @Column({ nullable: true })
+    tokenResetPassword: string
   
     @Column({ default: true })
     isActive: boolean;
     
-    @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true, onDelete:"CASCADE" })
+    @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true })
     vehicles: Vehicles[]
 
     @OneToMany(() => Comments, comments => comments.user)

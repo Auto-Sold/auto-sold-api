@@ -3,6 +3,9 @@ import { AppError } from "../../errors/appError";
 import createAnnounceService from "../../services/announce/createAnnounce.service";
 
 const createAnnounceController = async (req: Request, res: Response) => {
+
+    
+    
     try {
         const {
             announceType,
@@ -16,7 +19,7 @@ const createAnnounceController = async (req: Request, res: Response) => {
            
         } = req.body
 
-        // const { id } = req.user
+        // const { id } = req.user.id
 
         const newAnnounce = await createAnnounceService({
             announceType,
