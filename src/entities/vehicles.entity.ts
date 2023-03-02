@@ -5,7 +5,6 @@ import { v4 as uuid } from "uuid";
 import { User } from "./user.entity";
 import { Comments } from "./comments.entity";
 
-import { VehiclesImages } from "./vehiclesImages.entity";
 
 
 @Entity("vehicles")
