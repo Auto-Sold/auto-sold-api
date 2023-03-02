@@ -8,7 +8,7 @@ const routes = Router()
 export const emailRoutes = () =>{
 
     routes.post("",ensureauthToken, sendEmailController)
-
+    
     return routes
 }
 
