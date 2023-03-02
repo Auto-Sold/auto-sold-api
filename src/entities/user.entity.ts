@@ -45,7 +45,6 @@ export class User {
     isActive: boolean;
     
     @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true })
-
     vehicles: Vehicles[]
 
     @OneToMany(() => Comments, comments => comments.user)

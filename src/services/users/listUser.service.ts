@@ -5,7 +5,7 @@ import { IUserRequest } from "../../interfaces/users";
 
 export const listUserService = async () :Promise<User[]>=>{
     const userRepository = AppDataSource.getRepository(User)
-    const users = await userRepository.find() 
+    const users = await userRepository.find({relations:{vehicles:true}}) 
 
     return users
 }

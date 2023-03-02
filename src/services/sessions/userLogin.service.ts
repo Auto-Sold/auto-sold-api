@@ -11,11 +11,13 @@ export const userLoginService = async ({email, password}: IUserLogin)=>{
     const userRepository = AppDataSource.getRepository(User)
     const users = await userRepository.find()
 
-    const account = users.find((user)=>user.email === email)
-
+    const account = users.find((user)=> user.email === email)
+    
     if(!account){
         throw new AppError("Wrong email/password",403)
+
     }
+
     if(!bcrypt.compareSync(password, account.password)){
         throw new AppError("Wrong email/password",403)
     }
@@ -24,12 +26,14 @@ export const userLoginService = async ({email, password}: IUserLogin)=>{
     }
     const token = jwt.sign(
         {
-            isActive: account.isActive,
+            
             id: account.id,
+            isActive: account.isActive,
+            email: account.email           
         },
         process.env.SECRET_KEY as string,
         {
-            expiresIn: "24"
+            expiresIn: "24h",
         }
     )
 
