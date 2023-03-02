@@ -2,13 +2,13 @@ import AppDataSource from "../../data-source";
 import { Vehicles } from "../../entities/vehicles.entity";
 import { IAnnounceRequest } from "../../interfaces/vehicles";
 
-const updateAnnounce = async (id: number, data: IAnnounceRequest) => {
+const updateAnnounceService = async (id: string, data: IAnnounceRequest) => {
   const announceRepository = AppDataSource.getRepository(Vehicles);
 
-  const announce = await announceRepository.findOne(id);
+  const announce = await announceRepository.findOneBy({id});
 
   if (!announce) {
-    throw new Error(`Announce with id ${id} not found`);
+    throw new Error(`Announce with not found`);
   }
 
   announce.announceType = data.announceType;
@@ -25,4 +25,4 @@ const updateAnnounce = async (id: number, data: IAnnounceRequest) => {
   return announce;
 };
 
-export default updateAnnounce;
+export default updateAnnounceService;
