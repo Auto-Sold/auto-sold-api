@@ -1,5 +1,5 @@
 
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn, OneToMany, OneToOne } from "typeorm";
 import { VehiclesImages } from "./vehiclesImages.entity";
 import { v4 as uuid } from "uuid";
 import { User } from "./user.entity";
@@ -49,8 +49,8 @@ export class Vehicles {
     @Column({ nullable: true })
     userId: string;
 
-    @ManyToOne(() => User)
-    user: User[]
+    @ManyToOne(() => User, )
+    user: User
 
     @Column({ nullable: true })
     vehiclesImagesId: string;
@@ -58,6 +58,7 @@ export class Vehicles {
     @ManyToOne(() => VehiclesImages, vehiclesImages => vehiclesImages.vehicle, { eager: true })
     vehiclesImages: VehiclesImages[];
 
+   
 
     @OneToMany(() => Comments, comments => comments.vehicles, { eager: true })
     comments: Comments
