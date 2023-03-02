@@ -14,7 +14,7 @@ export const createUserService = async ( {completeName, email, telephone, passwo
    
 
     if(emailOrCpfAlreadyExists){
-        throw new AppError("Email Already exists")
+        throw new AppError(" User Already exists ")
     }
 
     const hashPassword = bcrypt.hashSync(password,10)

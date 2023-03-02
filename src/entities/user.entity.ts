@@ -41,7 +41,7 @@ export class User {
     @Column({ default: true })
     isActive: boolean;
     
-    @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true })
+    @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true, onDelete:"CASCADE" })
     vehicles: Vehicles[]
 
     @OneToMany(() => Comments, comments => comments.user)

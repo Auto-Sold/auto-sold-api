@@ -8,6 +8,6 @@ export const retrieveUserController = async (req: Request, res: Response)=>{
     const data: IUserUpdate = req.body
 
     const user = await retrieveUserService(id, data)
-    res.status(200).json(instanceToPlain({}))
+    res.status(200).json(instanceToPlain(user))
 
 } 

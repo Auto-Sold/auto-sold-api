@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ensureauthToken from "../middlewares/ensureAuthToken.middleware";
+import {ensureauthToken} from "../middlewares/ensureAuthToken.middleware";
 
 import { listUserIdController } from "../controllers/users/listUserId.controller";
 import { createUserController } from "../controllers/users/createUser.controller";
@@ -11,10 +11,10 @@ const routes = Router()
 
 export const userRoutes = () => {
     routes.post("", createUserController)
-    routes.get("",listUserController, ensureauthToken,)
-    routes.delete("/:id",deleteUserController, ensureauthToken,)
-    routes.get("/:id",listUserIdController)
-    routes.patch("/:id",retrieveUserController, ensureauthToken,)
+    routes.get("", ensureauthToken, listUserController)
+    routes.delete("/:id", ensureauthToken, deleteUserController )
+    routes.get("/:id", ensureauthToken, listUserIdController)
+    routes.patch("/:id", ensureauthToken, retrieveUserController )
 
     return routes
 }
