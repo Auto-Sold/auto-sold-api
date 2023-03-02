@@ -4,14 +4,15 @@ import { Vehicles } from "../../entities/vehicles.entity"
 import { AppError } from "../../errors/appError"
 // =========================IMPORTS=================================================
 
-const retrieveAnnouncementsService = async (userId: string): Promise<Vehicles[] | null> =>{
+const retrieveAnnouncementsService = async (announceId: string): Promise<Vehicles[] | null> =>{
 const vehiclesRepository = AppDataSource.getRepository(Vehicles)
-const userRepository = AppDataSource.getRepository(User)
-const findUser = await userRepository.findOneBy({id: userId})
-if (!findUser){
-    throw new AppError("Announcer not found", 400)
+
+const vehicles = await vehiclesRepository.find(
+    {relations:{user:true},
+    where:{id:announceId}})
+if(!vehicles){
+    throw new AppError("Announce not found", 404)
 }
-const vehicles = await vehiclesRepository.findBy({user : findUser})
 
 return vehicles
 }

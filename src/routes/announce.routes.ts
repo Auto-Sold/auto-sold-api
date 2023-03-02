@@ -14,7 +14,7 @@ const routes = Router()
 export const announceRoutes = () => {
     routes.post("",ensureauthToken, createAnnounceController)
     routes.get("", listAnnounceController)
-    routes.get("/:id", ensureauthToken, retrieveAnnounceController)
+    routes.get("/:id", retrieveAnnounceController)
     routes.delete( "/:id", deleteAnnounceController )
     routes.patch("/:id", ensureauthToken, updateAnnounceController)
 
