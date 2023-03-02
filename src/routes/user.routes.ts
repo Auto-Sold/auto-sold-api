@@ -13,9 +13,9 @@ const routes = Router()
 export const userRoutes = () => {
     routes.post("", createUserController)
     routes.get("",listUserController, ensureauthToken,)
-    routes.delete("/:id",deleteUserController, ensureauthToken,)
     routes.get("/:id",listUserIdController)
     routes.patch("/:id",retrieveUserController, ensureauthToken,)
+    routes.delete("/:id",deleteUserController, ensureauthToken,)
     routes.post("/resetPassword",sendResetPasswordUserController)
     routes.patch("/password/:token",resetPasswordUserController)
 

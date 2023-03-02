@@ -6,12 +6,14 @@ import * as crypto from "crypto"
 import { IEmailRequest } from "../../interfaces/email"
 // ================================================Imports================================================
 
-const sendResetUserPasswordSerivce =async (email:string, protocol: string, host: string|undefined): Promise<void> => {
+const sendResetUserPasswordSerivce =async (email:string, protocol: string, host: string | undefined): Promise<void> => {
     const userRepository = AppDataSource.getRepository(User)
 
     const user = await userRepository.findOne({
         where: {email: email}
     })
+    console.log(user);
+    
     if (!user) {
         throw new AppError("User not found")
         

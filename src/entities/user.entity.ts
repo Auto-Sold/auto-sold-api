@@ -38,7 +38,7 @@ export class User {
     @Column({ nullable: true })
     bio: string
 
-    @Column()
+    @Column({ nullable: true })
     tokenResetPassword: string
   
     @Column({ default: true })
