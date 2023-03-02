@@ -28,11 +28,14 @@ const createCommentService = async (
 
   await commentRepository.save(comment)
 
-  vehicle.comments = [...vehicle.comments, comment]
-
-  await vehicleRepository.save(vehicle)
-
+  
   return comment
 }
 
 export default createCommentService
+
+
+
+// vehicle.comments = [...vehicle.comments, comment]
+
+// await vehicleRepository.save(vehicle)

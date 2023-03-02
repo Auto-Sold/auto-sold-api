@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AppError } from "../../errors/appError";
-import createCommentService from "../../services/comments/comments.service";
+import createCommentService from "../../services/comments/createComments.service";
 
 const addCommentToVehicleController = async (req: Request, res: Response) => {
   try {
