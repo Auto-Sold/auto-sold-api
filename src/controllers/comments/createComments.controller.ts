@@ -5,7 +5,7 @@ import createCommentService from "../../services/comments/createComments.service
 const createCommentController = async (req: Request, res: Response) => {
   try {
     const  vehicleId = req.params.id;
-    const  text  = req.body;
+    const  text  = req.body.text;
 
     const comment = await createCommentService( text , vehicleId);
 
