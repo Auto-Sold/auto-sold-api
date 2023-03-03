@@ -6,7 +6,7 @@ import retrieveAnnouncementsService from "../../services/announce/retrieveAnnoun
 const retrieveAnnounceController =async (req:Request, res: Response) => {
     const announceId = req.params.id;
     const listAnnounce = await retrieveAnnouncementsService(announceId);
-    return res.status(201).json(listAnnounce);
+    return res.status(200).json(listAnnounce);
 }
 
 export default retrieveAnnounceController

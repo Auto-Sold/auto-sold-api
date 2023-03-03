@@ -13,26 +13,24 @@ const createCommentService = async (
 
   const vehicle = await vehicleRepository.findOne({
     where: { id: vehicleId },
-    relations: ['comments'],
+    relations: {comments: true},
   })
 
   if (!vehicle) {
     throw new AppError('Vehicle not found', 404)
   }
+  const comments = new Comments()
+  comments.text = text
+  comments.vehicles = vehicle
 
-  const comment = commentRepository.create({
-    text,
-    vehicles: vehicle,
-    
-  })
-
-  await commentRepository.save(comment)
+  commentRepository.create(comments)
+  await commentRepository.save(comments)
 
   // vehicle.comments = [...vehicle.comments, comment]
 
   // await vehicleRepository.save(vehicle)
 
-  return comment
+  return comments
 }
 
 export default createCommentService

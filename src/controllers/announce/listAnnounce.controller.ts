@@ -7,7 +7,7 @@ import listAnnouncementsService from "../../services/announce/listAnnounce.servi
 const listAnnounceController =async (req:Request, res: Response) => {
     
     const listAnnounce = await listAnnouncementsService();
-    return res.status(201).json(listAnnounce);
+    return res.status(200).json(listAnnounce);
 }
 
 export default listAnnounceController

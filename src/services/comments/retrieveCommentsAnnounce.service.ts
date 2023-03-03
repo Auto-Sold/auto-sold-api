@@ -2,11 +2,14 @@ import AppDataSource from "../../data-source"
 import { Comments } from "../../entities/comments.entity"
 // =========================IMPORTS=================================================
 
-const listCommentsService =async (): Promise <Comments[]> => {
+const retrieveCommentsAnnounceService =async (vehicleId: string): Promise <any> => {
     const commentsRepository = AppDataSource.getRepository(Comments)
     const comments = await commentsRepository.find(
-        {relations:{answers:true, vehicles:true}})
-
-    return comments
+        {relations:{vehicles:true}}
+       )
+    const result = comments.find((comment) => comment.vehicles.id === vehicleId)
+        console.log(result);
+        
+    return result
 }
-export default listCommentsService
+export default retrieveCommentsAnnounceService
