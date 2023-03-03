@@ -4,10 +4,9 @@ import { Vehicles } from '../../entities/vehicles.entity'
 import { Comments } from '../../entities/comments.entity'
 
 const createCommentService = async (
-  commentRequest: any,
-  vehicleId: string
+  text: string,
+  vehicleId: string, 
 ) => {
-  const { text } = commentRequest
 
   const vehicleRepository = AppDataSource.getRepository(Vehicles)
   const commentRepository = AppDataSource.getRepository(Comments)
@@ -24,13 +23,14 @@ const createCommentService = async (
   const comment = commentRepository.create({
     text,
     vehicles: vehicle,
+    
   })
 
   await commentRepository.save(comment)
 
-  vehicle.comments = [...vehicle.comments, comment]
+  // vehicle.comments = [...vehicle.comments, comment]
 
-  await vehicleRepository.save(vehicle)
+  // await vehicleRepository.save(vehicle)
 
   return comment
 }
