@@ -12,7 +12,6 @@ const sendResetUserPasswordSerivce =async (email:string, protocol: string, host:
     const user = await userRepository.findOne({
         where: {email: email}
     })
-    console.log(user);
     
     if (!user) {
         throw new AppError("User not found")
