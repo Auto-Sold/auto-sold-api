@@ -1,8 +1,9 @@
-import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne, PrimaryColumn, OneToMany, UpdateDateColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne, PrimaryColumn, OneToMany, UpdateDateColumn, JoinColumn } from "typeorm";
 import { Exclude } from "class-transformer";
 import { Answers } from "./answers.entity";
 import { Comments } from "./comments.entity";
 import { Vehicles } from "./vehicles.entity";
+import { Address } from "./address.entity";
 
 @Entity("user")
 export class User {
@@ -30,13 +31,16 @@ export class User {
     password: string
 
     @Column({ nullable: false })
-    cpf: number
+    cpf: string
 
     @Column({ nullable: true })
     image: string
 
     @Column({ nullable: true })
     bio: string
+
+    @Column()
+    dateBirth: string
 
     @Column({ nullable: true })
     tokenResetPassword: string
@@ -52,4 +56,8 @@ export class User {
 
     @OneToMany(() => Answers, answers => answers.user)
     answers: Answers[]
+
+    @OneToOne(()=>Address,  { eager: true })
+    @JoinColumn()
+    address: Address
 }

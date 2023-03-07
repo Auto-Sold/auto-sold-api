@@ -4,16 +4,9 @@ import { IUserRequest } from "../../interfaces/users";
 import { createUserService } from "../../services/users/createUser.service";
 
 export const createUserController = async (req: Request, res: Response)=>{
-    const {
-        completeName,
-        email,
-        telephone,
-        password,
-        cpf,
-        image,
-        bio,
-        }:IUserRequest = req.body
+    const data:IUserRequest = req.body
+    const address = req.body.address
         
-        const user = await createUserService({completeName, email, telephone, password, cpf, image, bio})
-        return res.status(201).json(instanceToPlain(user))
+    const user = await createUserService(data,address)
+    return res.status(201).json(instanceToPlain(user))
 }

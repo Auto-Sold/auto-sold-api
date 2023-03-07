@@ -3,9 +3,10 @@ export interface IUserRequest{
     email: string,
     telephone: string,
     password: string,
-    cpf: number,
+    cpf: string,
     image: string,
     bio: string,
+    dateBirth: string
 
 } 
 export interface IUser {
@@ -13,10 +14,11 @@ export interface IUser {
     email: string,
     telephone: string,
     password: string,
-    cpf: number,
+    cpf: string,
     image: string,
     bio: string
     isAdm: boolean
+   
     createdAt: Date
     updatedAt: Date
 }
@@ -26,7 +28,7 @@ export interface IUserUpdate{
     email?: string,
     telephone?: string,
     password?: string,
-    cpf?: number,
+    cpf?: string,
     image?: string,
     bio?: string,
 
@@ -35,4 +37,13 @@ export interface IUserUpdate{
 export interface IUserLogin {
     email: string
     password: string
+}
+
+export interface IAddressRequest {
+    complement: string
+    zipCode: string
+    number?: string
+    city: string
+    state: string
+    street: string
 }
