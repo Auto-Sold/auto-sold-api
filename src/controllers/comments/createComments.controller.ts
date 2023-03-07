@@ -6,8 +6,9 @@ const createCommentController = async (req: Request, res: Response) => {
   try {
     const  vehicleId = req.params.id;
     const  text  = req.body.text;
+    const user = req.user.id;
 
-    const comment = await createCommentService( text , vehicleId);
+    const comment = await createCommentService( text , vehicleId, user);
 
     return res.status(201).send(comment);
   } catch (error) {

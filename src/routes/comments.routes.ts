@@ -9,8 +9,8 @@ const routes = Router()
 
 export const commentsRoutes = () => {
     routes.post("/:id",ensureauthToken, createCommentController)
-    routes.get("",ensureauthToken, listCommentsController )
-    routes.get("/:id",ensureauthToken, retrieveAnnounceController )
+    routes.get("", listCommentsController )
+    routes.get("/:id", retrieveAnnounceController )
     // routes.delete( "/:id", ensureauthToken, )
     // routes.patch("/:id", ensureauthToken, )
 

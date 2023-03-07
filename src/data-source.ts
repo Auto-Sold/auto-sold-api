@@ -6,8 +6,10 @@ import { Comments } from "./entities/comments.entity";
 import { Answers } from "./entities/answers.entity";
 import { VehiclesImages } from "./entities/vehiclesImages.entity";
 
+
 import { Address } from "./entities/address.entity";
 import { myMigration1678133690526 } from "./migrations/1678133690526-myMigration~";
+
 
 const AppDataSource = new DataSource(
     process.env.NODE_ENV === "test" ?
@@ -26,8 +28,10 @@ const AppDataSource = new DataSource(
             database: process.env.DB,
             logging: true,
             synchronize: true,
+
             entities: [Vehicles, User, Comments, Answers, VehiclesImages, Address],
             migrations: [myMigration1678133690526 ]
+
         }
 )
 

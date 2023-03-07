@@ -5,11 +5,12 @@ import { Comments } from "../../entities/comments.entity"
 const retrieveCommentsAnnounceService =async (vehicleId: string): Promise <any> => {
     const commentsRepository = AppDataSource.getRepository(Comments)
     const comments = await commentsRepository.find(
-        {relations:{vehicles:true}}
+        {   
+            relations:{vehicles:true, user: true}}
        )
-    const result = comments.find((comment) => comment.vehicles.id === vehicleId)
+    const result = comments.filter((comment) => comment.vehicles.id === vehicleId)
         console.log(result);
         
-    return result
+    return result 
 }
 export default retrieveCommentsAnnounceService
