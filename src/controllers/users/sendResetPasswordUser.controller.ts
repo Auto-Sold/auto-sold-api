@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import { deleteUserService } from "../../services/users/deleteUser.service";
 import sendResetUserPasswordSerivce from "../../services/users/sendResetUserPassowrd.service";
 

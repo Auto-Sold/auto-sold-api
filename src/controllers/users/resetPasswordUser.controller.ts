@@ -4,8 +4,8 @@ import resetUserPasswordSerivce from "../../services/users/resetUserPassowrd.ser
 
 export const resetPasswordUserController = async (req:Request, res: Response)=>{
     const {token}= req.params
-    const {newPassword} = req.body;
-    await resetUserPasswordSerivce(newPassword, token);
+    
+    await resetUserPasswordSerivce(req.body.password, token);
     return res.json({message: "Password changed successfully"})
 }
 

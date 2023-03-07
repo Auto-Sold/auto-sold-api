@@ -13,6 +13,8 @@ const resetUserPasswordSerivce =async (newPassword:string,token:string): Promise
     const user = await userRepository.findOne({
         where: {tokenResetPassword: token}
     })
+    
+    
     if (!user) {
         throw new AppError("User not found")
         
