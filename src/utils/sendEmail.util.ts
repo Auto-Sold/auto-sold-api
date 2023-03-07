@@ -26,7 +26,7 @@ const sendEmail = async ({to, subject, text}:IEmailRequest) => {
         from: "autosoldkenzie@outlook.pt",
         to: to,
         subject: subject,
-        text: text
+        html: text
     }).then( () => {
         console.log("Email sent successfully");
     }
