@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn, } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, UpdateDateColumn, OneToMany, } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Comments } from "./comments.entity";
 import { User } from "./user.entity";
@@ -18,7 +18,7 @@ export class Answers {
     @ManyToOne(() => User, user => user.answers)
     user: User
 
-    @ManyToOne(() =>  Comments, comments => comments.answers)
+    @OneToMany(() =>  Comments, comments => comments.answers)
     comments: Comments
     
     constructor() {

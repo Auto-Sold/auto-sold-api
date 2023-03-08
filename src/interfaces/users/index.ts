@@ -6,7 +6,14 @@ export interface IUserRequest{
     cpf: string,
     image: string,
     bio: string,
-    dateBirth: string
+    dateBirth: string,
+    complement?: string,
+    zipCode: string,
+    number: string,
+    city: string,
+    state: string,
+    street: string,
+
 
 } 
 export interface IUser {
