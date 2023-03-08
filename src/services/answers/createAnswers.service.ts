@@ -28,7 +28,7 @@ const createAnswerservice = async (
   }
   const answers = new Answers()
   answers.text = text
-  answers.comments = findComment
+  // answers.comments = findComment
   answers.user = findUser 
 
   answerRepository.create(answers)
