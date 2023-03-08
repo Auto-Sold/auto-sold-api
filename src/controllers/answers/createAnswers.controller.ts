@@ -4,11 +4,11 @@ import createAnswerservice from "../../services/answers/createAnswers.service";
 
 const createAnswerController = async (req: Request, res: Response) => {
   try {
-    const   vehicleId = req.params.id;
+    const   commentId = req.params.id;
     const   text  = req.body.text;
     const   user = req.user.id;
 
-    const answer = await createAnswerservice( text , vehicleId, user);
+    const answer = await createAnswerservice( text , commentId, user);
 
     return res.status(201).send(answer);
   } catch (error) {

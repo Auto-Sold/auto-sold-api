@@ -1,12 +1,12 @@
 import AppDataSource from "../../data-source"
-import { Comments } from "../../entities/comments.entity"
+import { Answers } from "../../entities/answers.entity"
 // =========================IMPORTS=================================================
 
-const listCommentsService =async (): Promise <Comments[]> => {
-    const commentsRepository = AppDataSource.getRepository(Comments)
-    const comments = await commentsRepository.find(
-        {relations:{answers:true, vehicles:true}})
+const listAnswersService =async (): Promise <Answers[]> => {
+    const answersRepository = AppDataSource.getRepository(Answers)
+    const answers = await answersRepository.find(
+        {relations:{comments:true }})
 
-    return comments
+    return answers
 }
-export default listCommentsService
+export default listAnswersService

@@ -8,8 +8,8 @@ import * as crypto from "crypto"
 import { IAddressRequest, IUserRequest } from "../../interfaces/users";
 import { Address } from "../../entities/address.entity";
 
-export const createUserService = async ( {completeName, email, telephone, password, cpf, image, bio, dateBirth
-}: IUserRequest, address: IAddressRequest ):Promise<User>=>{
+export const createUserService = async ( {completeName, email, telephone, password, cpf, image, bio, dateBirth, city, complement, number, state, street, zipCode
+}: IUserRequest ):Promise<User>=>{
     const userRepository = AppDataSource.getRepository(User)
     const users = await userRepository.find({relations:{address:true}})
 
@@ -20,12 +20,12 @@ export const createUserService = async ( {completeName, email, telephone, passwo
     const addressRepository = AppDataSource.getRepository(Address)
     const addresses = await addressRepository.find()
     const addres = new Address()
-    addres.city = address.city
-    addres.complement = address.complement
-    addres.number = address.number || addres.number
-    addres.state = address.state 
-    addres.street = address.street
-    addres.zipCode =  address.zipCode
+    addres.city = city
+    addres.complement = complement || ""
+    addres.number = number 
+    addres.state = state 
+    addres.street = street
+    addres.zipCode =  zipCode
 
     if (addres.zipCode.split("").length > 8) {
         throw new AppError("Zipcode invalid");

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import createAnswerController from "../controllers/answers/createAnswers.controller";
+import listAnswersController from "../controllers/answers/listAnswers.controller";
 import createCommentController from "../controllers/comments/createComments.controller";
 import listCommentsController from "../controllers/comments/listComments.controller";
 import retrieveAnnounceController from "../controllers/comments/retrieveAnnounceComments.controller";
@@ -10,7 +11,7 @@ const routes = Router()
 
 export const answersRoutes = () => {
     routes.post("/:id",ensureauthToken, createAnswerController )
-    routes.get("",  )
+    routes.get("", listAnswersController)
     // routes.get("/:id", retrieveAnnounceController )
     // routes.delete( "/:id", ensureauthToken, )
     // routes.patch("/:id", ensureauthToken, )

@@ -1,42 +1,44 @@
 import { AppError } from '../../errors/appError'
 import AppDataSource from '../../data-source'
-import { Vehicles } from '../../entities/vehicles.entity'
 import { Comments } from '../../entities/comments.entity'
 import { User } from '../../entities/user.entity'
 import { Answers } from '../../entities/answers.entity'
 
 const createAnswerservice = async (
   text: string,
-  vehicleId: string,
+  commentId: string,
   userId: string  
 ) => {
 
-  const vehicleRepository = AppDataSource.getRepository(Vehicles)
+
   const userRepository = AppDataSource.getRepository(User)
-  const commentRepository = AppDataSource.getRepository(Answers)
+  const answerRepository = AppDataSource.getRepository(Answers)
+  const commentsRepository = AppDataSource.getRepository(Comments)
 
   const findUser = await userRepository.findOneBy({id: userId})
 
-  const vehicle = await vehicleRepository.findOne({
-    where: { id: vehicleId },
-  })
+  const findComment = await commentsRepository.findOneBy({ id: commentId })
+  
+  
   if (!findUser) {
-    throw new AppError('Login to comment', 404)
+    throw new AppError('Login to answer', 404)
   }
-  if (!vehicle) {
-    throw new AppError('Vehicle not found', 404)
+  if (!findComment) {
+    throw new AppError('Comment not found', 404)
   }
   const answers = new Answers()
   answers.text = text
-  answers.comments = vehicle.comments
+  // answers.comments = findComment
   answers.user = findUser 
 
-  commentRepository.create(answers)
-  await commentRepository.save(answers)
+  answerRepository.create(answers)
 
-  // vehicle.answers = [...vehicle.answers, comment]
 
-  // await vehicleRepository.save(vehicle)
+  await answerRepository.save(answers)
+
+  findComment.answers = [...findComment.answers, answers]
+
+  await commentsRepository.update(findComment, {id:commentId})
 
   return answers
 }

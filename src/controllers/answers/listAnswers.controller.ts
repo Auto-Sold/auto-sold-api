@@ -1,13 +1,13 @@
 import { Request, Response} from "express";
-import listCommentsService from "../../services/comments/listComments.service";
+import listAnswersService from "../../services/answers/listAnswers.service";
 
 
 // =========================IMPORTS=================================================
 
-const listCommentsController =async (req:Request, res: Response) => {
+const listAnswersController =async (req:Request, res: Response) => {
     
-    const listComments = await listCommentsService();
-    return res.status(201).json(listComments);
+    const listAnswers = await listAnswersService();
+    return res.status(201).json(listAnswers);
 }
 
-export default listCommentsController
+export default listAnswersController
