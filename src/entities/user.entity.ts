@@ -48,6 +48,9 @@ export class User {
     @Column({ default: true })
     isActive: boolean;
     
+    @Column({ default:false })
+    isSeller: boolean;
+
     @OneToMany(() => Vehicles, vehicles => vehicles.user, { eager: true })
     vehicles: Vehicles[]
 
