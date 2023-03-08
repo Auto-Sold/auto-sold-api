@@ -39,7 +39,7 @@ export class User {
     @Column({ nullable: true })
     bio: string
 
-    @Column()
+    @Column({nullable: true })
     dateBirth: string
 
     @Column({ nullable: true })
